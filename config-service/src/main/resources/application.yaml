@@ -6,6 +6,8 @@ spring:
     config:
       server:
         git:
-          default-label:
-          uri:
-
+          default-label: master
+          uri: https://github.com/Alan-Mejia/Prueba2MS
+          search-paths: config-data
+  application:
+    name: config-service
