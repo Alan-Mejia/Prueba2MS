@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          default-label: eureka
+          default-label: multiple-instances
           uri: https://github.com/Alan-Mejia/Prueba2MS
           search-paths: config-data
   application:
