@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          default-label: multiple-instances
+          default-label: gateway
           uri: https://github.com/Alan-Mejia/Prueba2MS
           search-paths: config-data
   application:
