@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          default-label: gateway
+          default-label: circuit-braker-resilience4j
           uri: https://github.com/Alan-Mejia/Prueba2MS
           search-paths: config-data
   application:

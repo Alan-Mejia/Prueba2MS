@@ -3,6 +3,7 @@ package com.doctor.api.controller;
 import com.doctor.api.dtos.SimpleUserDTO;
 import com.doctor.api.models.User;
 import com.doctor.api.serviceImpl.UserServiceImpl;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,11 +52,15 @@ public class UserController extends GenericControllerImpl<User,UserServiceImpl> 
         return userService.updateUser(user,id).thenApply(ResponseEntity::ok);
     }
 
-
+    @CircuitBreaker(name = "doctorsCB", fallbackMethod = "fallbackSaveDoctorProfile")
     @Override
     @DeleteMapping("/{id}")
     public CompletableFuture<ResponseEntity> delete(@PathVariable("id")Long id){
         return userService.deleteUser(id).thenApply(ResponseEntity::ok);
+    }
+
+    private CompletableFuture<ResponseEntity> fallbackSaveDoctorProfile(@PathVariable("id")Long id){
+        return CompletableFuture.completedFuture(ResponseEntity.ok("Response Entity"));
     }
 
 }
