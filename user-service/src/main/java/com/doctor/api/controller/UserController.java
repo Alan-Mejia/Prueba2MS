@@ -59,7 +59,7 @@ public class UserController extends GenericControllerImpl<User,UserServiceImpl> 
         return userService.deleteUser(id).thenApply(ResponseEntity::ok);
     }
 
-    private CompletableFuture<ResponseEntity> fallbackSaveDoctorProfile(@PathVariable("id")Long id){
+    private CompletableFuture<ResponseEntity> fallbackSaveDoctorProfile(@PathVariable("id")Long id, RuntimeException e){
         return CompletableFuture.completedFuture(ResponseEntity.ok("Response Entity"));
     }
 
